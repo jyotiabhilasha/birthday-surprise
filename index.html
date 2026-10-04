@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Special One 💜</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #160b29, #4b206d, #9b5de5);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+section {
+  min-height: 100vh;
+  padding: 70px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 38px;
+  margin: 20px 0;
+  text-shadow: 0 0 20px #e5b8ff;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+button {
+  background: #f5d0fe;
+  color: #42145d;
+  border: none;
+  padding: 15px 28px;
+  border-radius: 30px;
+  font-size: 16px;
+  margin-top: 25px;
+  cursor: pointer;
+  box-shadow: 0 0 20px #d8a7ff;
+}
+
+button:active {
+  transform: scale(.95);
+}
+
+.hidden {
+  display: none;
+}
+
+.card {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 25px;
+  padding: 30px 20px;
+  max-width: 550px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(220,160,255,.2);
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  animation: float 7s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes float {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 2px solid #e9c4ff;
+}
+
+footer {
+  padding: 30px;
+  color: #f5d0fe;
+}
+</style>
+</head>
+
+<body>
+    <audio id="bgMusic" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<section id="welcome">
+    <button onclick="document.getElementById('bgMusic').play()">
+🎵 Play Our Song ❤️
+</button>
+  <div class="card">
+    <div style="font-size:60px">💜</div>
+    <p>A little surprise is waiting for you...</p>
+    <h1>For My Special One</h1>
+    <p>Some people make life more beautiful just by existing.</p>
+    <button onclick="openSurprise()">Open Your Surprise ✨</button>
+  </div>
+</section>
+
+<section id="birthday" class="hidden">
+  <div style="font-size:65px">🎂🎉</div>
+  <h1>Happy Birthday! 💜</h1>
+  <p>Today is all about you. May your life always be filled with happiness, love, peace and beautiful moments.</p>
+  <button onclick="showMemories()">See Our Memories 📸</button>
+</section>
+
+<section id="memories" class="hidden">
+  <h1>Our Little Memories 📸</h1>
+  <p>Every beautiful moment deserves a place in our story.</p>
+  <div class="gallery">
+    <img src="photo1.jpg" alt="Memory 1">
+<img src="photo2.jpg" alt="Memory 2">
+<img src="photo3.jpg" alt="Memory 3">
+  </div>
+  <button onclick="showLetter()">Read My Letter 💌</button>
+</section>
+
+<section id="letter" class="hidden">
+  <div class="card">
+    <h1>Dear You 💌</h1>
+    <p>
+       My Dearest Special One, ❤️<br><br>
+
+If I could give you one gift, it would be the ability to see yourself through my eyes. Then you would understand how truly special you are to me.<br><br>
+
+You are one of the most beautiful feelings in my life. Even the smallest moments become precious when they are connected to you.<br><br>
+
+On your birthday, I wish you endless happiness, success, peace and all the love your heart deserves.<br><br>
+
+No matter how life changes, you will always have a very special place in my heart.<br><br>
+
+Happy Birthday, My Special One! ❤️<br><br>
+
+With all my love,<br>
+Someone who loves you deeply. 💜
+    </p>
+    <button onclick="showFinal()">One Last Surprise ✨</button>
+  </div>
+</section>
+
+<section id="final" class="hidden">
+  <div style="font-size:70px">🌙💜</div>
+  <h1>You Are Special</h1>
+  <p>May every new chapter of your life be more beautiful than the last.</p>
+  <h2>Happy Birthday, My Special One! 🎂</h2>
+  <p>Made with love 💜</p>
+</section>
+
+<footer>Forever a little piece of my heart 💜</footer>
+
+<script>
+function openSurprise() {
+  document.getElementById("welcome").style.display = "none";
+  document.getElementById("birthday").style.display = "flex";
+}
+
+function showMemories() {
+  document.getElementById("birthday").style.display = "none";
+  document.getElementById("memories").style.display = "flex";
+}
+
+function showLetter() {
+  document.getElementById("memories").style.display = "none";
+  document.getElementById("letter").style.display = "flex";
+}
+
+function showFinal() {
+  document.getElementById("letter").style.display = "none";
+  document.getElementById("final").style.display = "flex";
+}
+
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = Math.random() > .5 ? "💜" : "✨";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (15 + Math.random() * 25) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
+}, 500);
+</script>
+
+</body>
+  </html>
